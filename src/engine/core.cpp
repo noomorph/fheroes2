@@ -22,6 +22,7 @@
 
 #include <cassert>
 #include <cstdint>
+#include <cstdlib>
 #include <stdexcept>
 
 // Managing compiler warnings for SDL headers
@@ -80,7 +81,11 @@ namespace
 
     void freeHardwareInternally()
     {
+#if defined( __IPHONEOS__ )
+        std::exit( 0 );
+#else
         // Do nothing.
+#endif
     }
 #endif
 
